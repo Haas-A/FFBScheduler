@@ -1,9 +1,17 @@
+import csv
 
-divisions = input("Enter the number of divisions: ")
-Teams = []
-for i in range(0,int(divisions)):
-    TeamList = input("Enter the team names in division " + str(i) + " separated by commas:").split(',')
-    for j in range(0, len(TeamList)):
-        Teams.append((TeamList[j], i))
+filename = 'FourDiv.csv'
 
-print(Teams)
+file = open(filename, 'r')
+
+data = csv.DictReader(file)
+
+numDivs = len(data.fieldnames)
+
+Divs = {}
+for row in data:
+    for i in range(1, numDivs):
+        print(i)
+        print(row[str(i)])
+
+print(data.fieldnames)
